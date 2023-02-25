@@ -14,6 +14,7 @@ from discord.ext import commands
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
+intents = discord.Intents.all()
 
 # Silence useless bug reports messages
 youtube_dl.utils.bug_reports_message = lambda: ''
@@ -497,12 +498,11 @@ class Music(commands.Cog):
                 raise commands.CommandError('Bot is already in a voice channel.')
 
 
-bot = commands.Bot('music.', description='Yet another music bot.')
-bot.add_cog(Music(bot))
-
+bot = commands.Bot(command_prefix='music.', description='Yet another music bot.', intents=intents)
 
 @bot.event
 async def on_ready():
+    await bot.add_cog(Music(bot))
     print('Logged in as:\n{0.user.name}\n{0.user.id}'.format(bot))
 
 bot.run(TOKEN)
