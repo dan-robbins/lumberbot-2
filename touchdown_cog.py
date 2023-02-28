@@ -39,7 +39,7 @@ class touchdown_cog(commands.Cog):
         if args[0] == "remove":
             if len(args) == 1:
                 return
-            if len(args[1] == 0):
+            if len(args[1]) == 0:
                 return
             with open('touchdowns.json', 'r') as openfile:
                 touchdowns = json.load(openfile)
