@@ -9,6 +9,7 @@ from wood_cog import wood_cog
 from livecounter_cog import livecounter_cog
 from cannon_cog import cannon_cog
 from censorship_cog import censorship_cog
+from touchdown_cog import touchdown_cog
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -24,6 +25,7 @@ async def add_cogs(bot: commands.Bot):
     #await bot.add_cog(livecounter_cog(bot))
     #await bot.add_cog(cannon_cog(bot, owner_id=OWNER_ID))
     #await bot.add_cog(censorship_cog(bot))
+    #await bot.add_cog(touchdown_cog(bot))
 
 bot = commands.Bot(command_prefix=prefix, description='Yet another music bot.', intents=intents)
 
