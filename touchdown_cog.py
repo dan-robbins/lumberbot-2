@@ -13,6 +13,7 @@ class touchdown_cog(commands.Cog):
         if message.content == 'touchdowns' or message.content == 'score' or message.content == 'scoreboard':
             with open('touchdowns.json', 'r') as openfile:
                 touchdowns = json.load(openfile)
+            touchdowns = dict(sorted(touchdowns.items(), key=lambda item: item[1], reverse=True))
             val = "Touchdowns:\n"
             for x in touchdowns:
                 name = str(x)
