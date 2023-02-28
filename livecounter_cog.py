@@ -1,7 +1,7 @@
 import json
 from discord.ext import commands
 
-class wood_cog(commands.Cog):
+class livecounter_cog(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
 
