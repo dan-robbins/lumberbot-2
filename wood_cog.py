@@ -2,11 +2,11 @@ import json
 from discord.ext import commands
 
 class wood_cog(commands.Cog):
-    def __init__(self, bot: commands.Bot, wood_id, wood_posts, blocked):
+    def __init__(self, bot: commands.Bot, wood_id, wood_posts, blocked, wood_emoji):
         self.bot = bot
         self.WOOD_ID = wood_id
         self.wood_posts = wood_posts
-        self.wood_emoji = bot.get_emoji(557773039886925824)
+        self.wood_emoji = bot.get_emoji(wood_emoji)
         self.blocked = blocked
 
     @commands.Cog.listener()
