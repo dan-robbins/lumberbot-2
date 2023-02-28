@@ -5,13 +5,16 @@ from dotenv import load_dotenv
 from discord.ext import commands
 
 from music_cog import music_cog
+from wood_cog import wood_cog
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
+WOOD_ID = os.getenv('WOOD_ID')
 intents = discord.Intents.all()
 
 async def add_cogs(bot: commands.Bot):
     await bot.add_cog(music_cog(bot))
+    #await bot.add_cog(wood_cog(bot, wood_id=WOOD_ID, wood_posts=True, blocked=False))
 
 bot = commands.Bot(command_prefix='music.', description='Yet another music bot.', intents=intents)
 
