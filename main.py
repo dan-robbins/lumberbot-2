@@ -12,6 +12,7 @@ from censorship_cog import censorship_cog
 from touchdown_cog import touchdown_cog
 from waluigi_cog import waluigi_cog
 from eval_cog import eval_cog
+from ping_cog import ping_cog
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -31,6 +32,7 @@ async def add_cogs(bot: commands.Bot):
     #await bot.add_cog(touchdown_cog(bot))
     #await bot.add_cog(waluigi_cog(bot, neal_id=NEAL_ID))
     #await bot.add_cog(eval_cog(bot, owner_id=OWNER_ID))
+    #await bot.add_cog(ping_cog(bot))
 
 bot = commands.Bot(command_prefix=prefix, description='Yet another music bot.', intents=intents)
 
