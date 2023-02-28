@@ -21,40 +21,33 @@ class touchdown_cog(commands.Cog):
             await message.channel.send(val)
 
     @commands.command(name='touchdown')
-    async def _touchdown(self, ctx: commands.Context, arg: str):
+    async def _touchdown(self, ctx: commands.Context, arg1: str, arg2: str):
         """Add a touchdown for the specified name.
 
         Usage: touchdown <name> to add a touchdown for <name>
         touchdown remove <name> to remove a touchdown from <name>
         """
 
-        if len(arg) == 0:
-            return
-        args = arg.split()
-        if len(args) == 0:
-            return
-        if len(args[0]) == 0:
+        if arg1 == None or len(arg1) == 0:
             return
         
-        if args[0] == "remove":
-            if len(args) == 1:
-                return
-            if len(args[1]) == 0:
+        if arg1 == "remove":
+            if arg2 == None or len(arg2) == 0:
                 return
             with open('touchdowns.json', 'r') as openfile:
                 touchdowns = json.load(openfile)
-            if args[1].lower() in touchdowns:
-                touchdowns[args[1].lower()] = int(touchdowns[args[1].lower()])-1
+            if arg2.lower() in touchdowns:
+                touchdowns[arg2.lower()] = int(touchdowns[arg2.lower()])-1
                 with open("touchdowns.json", "w") as outfile:
                     json.dump(touchdowns, outfile)
-                await ctx.channel.send("Touchdown removed for {}.".format(args[1][0].upper() + args[1][1:].lower()))
+                await ctx.channel.send("Touchdown removed for {}.".format(arg2[0].upper() + arg2[1:].lower()))
         else:
             val = 0
             with open('touchdowns.json', 'r') as openfile:
                 touchdowns = json.load(openfile)
-            if args[0].lower() in touchdowns:
-                val = int(touchdowns[args[0].lower()])
-            touchdowns[args[0].lower()] = val + 1
+            if arg1.lower() in touchdowns:
+                val = int(touchdowns[arg1.lower()])
+            touchdowns[arg1.lower()] = val + 1
             with open("touchdowns.json", "w") as outfile:
                 json.dump(touchdowns, outfile)
-            await ctx.channel.send("Touchdown {}!".format(args[0][0].upper() + args[0][1:].lower()))
+            await ctx.channel.send("Touchdown {}!".format(arg1[0].upper() + arg1[1:].lower()))
