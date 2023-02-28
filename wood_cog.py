@@ -14,10 +14,10 @@ class wood_cog(commands.Cog):
         if reaction.emoji.id == self.wood_emoji.id and (reaction.message.author.id == self.WOOD_ID or reaction.message.author == self.bot.user):
             with open('records.json', 'r') as openfile:
                 records = json.load(openfile)
-            records["woods"] = records["woods"] + 1
+            records["woods"] = int(records["woods"]) + 1
             if int(records["woods"]) % 500 == 0:
                 await reaction.message.channel.send("Milestone reached! {} total woods!".format(records["woods"]))
-            if reaction.count > records["record"]:
+            if reaction.count > int(records["record"]):
                 await reaction.message.channel.send("New record! {} woods on a single post! Previous record was {} woods.".format(reaction.count, records["record"]))
                 records["record"] = reaction.count
             with open("records.json", "w") as outfile:
@@ -30,7 +30,7 @@ class wood_cog(commands.Cog):
         if reaction.emoji.id == self.wood_emoji.id and (reaction.message.author.id == self.WOOD_ID or reaction.message.author == self.bot.user):
             with open('records.json', 'r') as openfile:
                 records = json.load(openfile)
-            records["woods"] = records["woods"] - 1
+            records["woods"] = int(records["woods"]) - 1
             with open("records.json", "w") as outfile:
                 json.dump(records, outfile)
 
