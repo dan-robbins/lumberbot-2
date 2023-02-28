@@ -2,7 +2,7 @@ import json
 from discord.ext import commands
 
 class wood_cog(commands.Cog):
-    def __init__(self, bot: commands.Bot, wood_id, wood_posts, blocked, wood_emoji):
+    def __init__(self, bot: commands.Bot, wood_id: int, wood_posts: bool, blocked: bool, wood_emoji: int):
         self.bot = bot
         self.WOOD_ID = wood_id
         self.wood_posts = wood_posts

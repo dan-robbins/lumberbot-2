@@ -1,7 +1,7 @@
 from discord.ext import commands
 
 class cannon_cog(commands.Cog):
-    def __init__(self, bot: commands.Bot, owner_id):
+    def __init__(self, bot: commands.Bot, owner_id: int):
         self.bot = bot
         self.owner_id = owner_id
 

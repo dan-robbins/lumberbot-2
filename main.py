@@ -14,10 +14,10 @@ from waluigi_cog import waluigi_cog
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
-WOOD_ID = os.getenv('WOOD_ID')
-WOOD_EMOJI = os.getenv('WOOD_EMOJI')
-OWNER_ID = os.getenv('OWNER_ID')
-NEAL_ID = os.getenv('NEAL_ID')
+WOOD_ID = int(os.getenv('WOOD_ID'))
+WOOD_EMOJI = int(os.getenv('WOOD_EMOJI'))
+OWNER_ID = int(os.getenv('OWNER_ID'))
+NEAL_ID = int(os.getenv('NEAL_ID'))
 intents = discord.Intents.all()
 prefix = 'music.'
 
