@@ -13,7 +13,7 @@ class eval_cog(commands.Cog):
             return text
 
     @commands.command(name='eval')
-    async def _eval(self, ctx: commands.Context, *, arg):
+    async def _eval(self, ctx: commands.Context, *, arg: str):
         if not ctx.author.id == self.owner_id:
             await ctx.channel.send("Unauthorized user up in my grill! You trying to hack my Catch-a-Ride? Uncool bro, uncool.")
             return

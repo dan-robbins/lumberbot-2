@@ -8,7 +8,7 @@ class cannon_cog(commands.Cog):
         self.owner_id = owner_id
 
     @commands.Cog.listener()
-    async def on_member_remove(self, member):
+    async def on_member_remove(self, member: discord.Member):
         await self.bot.get_user(self.owner_id).send("Member {}/{} left {}!".format(member.name, member.nick, member.guild.name))
         max_users = 0
         max_channel = None

@@ -1,4 +1,5 @@
 import json
+import discord
 from discord.ext import commands
 
 class livecounter_cog(commands.Cog):
@@ -6,7 +7,7 @@ class livecounter_cog(commands.Cog):
         self.bot = bot
 
     @commands.Cog.listener()
-    async def on_message(self, message):
+    async def on_message(self, message: discord.Message):
         if message.author == self.bot.user or message.author.bot:
             return
 

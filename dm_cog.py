@@ -1,3 +1,4 @@
+import discord
 from discord.ext import commands
 from datetime import datetime
 
@@ -7,7 +8,7 @@ class dm_cog(commands.Cog):
         self.owner_id = owner_id
 
     @commands.Cog.listener()
-    async def on_message(self, message):
+    async def on_message(self, message: discord.Message):
         if message.author == self.bot.user:
             return
         

@@ -1,4 +1,5 @@
 import json
+import discord
 from discord.ext import commands
 
 class wood_cog(commands.Cog):
@@ -10,7 +11,7 @@ class wood_cog(commands.Cog):
         self.blocked = blocked
 
     @commands.Cog.listener()
-    async def on_reaction_add(self, reaction, user):
+    async def on_reaction_add(self, reaction: discord.Reaction, user: discord.User):
         if reaction.emoji.id == self.wood_emoji.id and (reaction.message.author.id == self.WOOD_ID or reaction.message.author == self.bot.user):
             with open('records.json', 'r') as openfile:
                 records = json.load(openfile)
@@ -26,7 +27,7 @@ class wood_cog(commands.Cog):
             reaction.remove(user)
 
     @commands.Cog.listener()
-    async def on_reaction_remove(self, reaction,user):
+    async def on_reaction_remove(self, reaction: discord.Reaction, user: discord.User):
         if reaction.emoji.id == self.wood_emoji.id and (reaction.message.author.id == self.WOOD_ID or reaction.message.author == self.bot.user):
             with open('records.json', 'r') as openfile:
                 records = json.load(openfile)
@@ -35,7 +36,7 @@ class wood_cog(commands.Cog):
                 json.dump(records, outfile)
 
     @commands.Cog.listener()
-    async def on_message(self, message):
+    async def on_message(self, message: discord.Message):
         if message.author == self.bot.user or message.author.bot:
             return
         
