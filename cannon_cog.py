@@ -1,5 +1,6 @@
 import asyncio
 import discord
+import random
 from discord.ext import commands
 
 class cannon_cog(commands.Cog):
@@ -19,9 +20,10 @@ class cannon_cog(commands.Cog):
                 max_channel = channel
         
         voice_client = await max_channel.connect()
-        source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio("sounds/cannon3.mp3"))
+        source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(random.choice(["sounds/cannon2.mp3", "sounds/cannon3.mp3", "sounds/cannon4.mp3", "sounds/cannon5.mp3"])))
         voice_client.play(source)
         while voice_client.is_playing():
             await asyncio.sleep(1)
         
+        await asyncio.sleep(60)
         await voice_client.disconnect()
