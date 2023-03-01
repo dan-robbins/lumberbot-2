@@ -29,7 +29,7 @@ async def add_cogs(bot: commands.Bot):
     #await bot.add_cog(wood_cog(bot, wood_id=WOOD_ID, wood_posts=True, blocked=False, wood_emoji=WOOD_EMOJI))
     #await bot.add_cog(livecounter_cog(bot))
     #await bot.add_cog(cannon_cog(bot, owner_id=OWNER_ID))
-    #await bot.add_cog(censorship_cog(bot))
+    #await bot.add_cog(censorship_cog(bot, owner_id=OWNER_ID)))
     #await bot.add_cog(touchdown_cog(bot))
     #await bot.add_cog(waluigi_cog(bot, neal_id=NEAL_ID))
     #await bot.add_cog(eval_cog(bot, owner_id=OWNER_ID))

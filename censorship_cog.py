@@ -1,14 +1,16 @@
 import re
+import discord
 from discord.ext import commands
 
 class censorship_cog(commands.Cog):
-    def __init__(self, bot: commands.Bot):
+    def __init__(self, bot: commands.Bot, owner_id: int):
         self.bot = bot
+        self.owner_id = owner_id
         self.regex1 = re.compile(r"(?:(?:f(?: o r e s k i |\.o\.r\.e\.s\.k\.i\.|oresk[1i])|4sk[1i])n|beforeskin|(?:fo(?:re? |ure)|phore)skin|forskine|(?:fo(?:rce|urs)|phors)kin)")
         self.regex2 = re.compile(r"(?:circum(?:ci[sz](?:i(?:ng|on)|ed?)|si[sz](?:i(?:ng|on)|ed?)|ci)|ircum(?:ci[sz](?:i(?:ng|on)|ed?)|si[sz](?:i(?:ng|on)|ed?)|ci))")
 
     @commands.Cog.listener()
-    async def on_message(self, message):
+    async def on_message(self, message: discord.Message):
         if message.author == self.bot.user or message.author.bot:
             return
         
