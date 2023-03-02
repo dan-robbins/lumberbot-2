@@ -10,6 +10,7 @@ class censorship_cog(commands.Cog):
         self.regex2 = re.compile(r"(?:circum(?:ci[sz](?:i(?:ng|on)|ed?)|si[sz](?:i(?:ng|on)|ed?)|ci)|ircum(?:ci[sz](?:i(?:ng|on)|ed?)|si[sz](?:i(?:ng|on)|ed?)|ci))")
         self.regex3 = re.compile(r"(?:(?:(?:force|(?:for[kr]|4)s)|fours)|pfors)kin")
         self.regex4 = re.compile(r"p* *h* *f* *h* *o+ *r* *c* *e* *s+ *k+ *i+ *n+")
+        self.regex5 = re.compile(r"fo(?:r(?:e(?:, S|\-s)|ced)|urs )kin")
 
     @commands.Cog.listener()
     async def on_message(self, message: discord.Message):
