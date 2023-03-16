@@ -61,5 +61,8 @@ class waluigi_cog(commands.Cog):
 
     @commands.command(name='waluigi')
     async def _waluigi(self, ctx: commands.Context):
+        """Waluigi in smash???
+        """
+
         response = random.choice(self.responses)
         await ctx.channel.send("{} {}".format(ctx.channel.guild.get_member(self.neal_id).mention, response))
