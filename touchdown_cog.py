@@ -21,6 +21,7 @@ class touchdown_cog(commands.Cog):
                 val = val + "{}: {}\n".format(name[0].upper() + name[1:], touchdowns[x]) 
             val = val[:-1]
             await message.channel.send(val)
+            return
 
     @commands.command(name='touchdown')
     async def _touchdown(self, ctx: commands.Context, arg1: str, arg2: str):
@@ -53,3 +54,19 @@ class touchdown_cog(commands.Cog):
             with open("touchdowns.json", "w") as outfile:
                 json.dump(touchdowns, outfile)
             await ctx.channel.send("Touchdown {}!".format(arg1[0].upper() + arg1[1:].lower()))
+
+    @commands.command(name='touchdowns', aliases=['score', 'scoreboard'])
+    async def _touchdowns(self, ctx: commands.Context):
+        """Print the current touchdown scoreboard.
+        """
+        
+        with open('touchdowns.json', 'r') as openfile:
+            touchdowns = json.load(openfile)
+        touchdowns = dict(sorted(touchdowns.items(), key=lambda item: item[1], reverse=True))
+        val = "Touchdowns:\n"
+        for x in touchdowns:
+            name = str(x)
+            val = val + "{}: {}\n".format(name[0].upper() + name[1:], touchdowns[x]) 
+        val = val[:-1]
+        await ctx.message.channel.send(val)
+        return
