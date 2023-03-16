@@ -21,7 +21,7 @@ WOOD_EMOJI = int(os.getenv('WOOD_EMOJI'))
 OWNER_ID = int(os.getenv('OWNER_ID'))
 NEAL_ID = int(os.getenv('NEAL_ID'))
 intents = discord.Intents.all()
-prefix = 'music.'
+prefix = '+'
 
 async def add_cogs(bot: commands.Bot):
     await bot.add_cog(wood_cog(bot, wood_id=WOOD_ID, wood_posts=True, blocked=False, wood_emoji=WOOD_EMOJI))
@@ -34,7 +34,7 @@ async def add_cogs(bot: commands.Bot):
     await bot.add_cog(ping_cog(bot))
     await bot.add_cog(dm_cog(bot, owner_id=OWNER_ID))
 
-bot = commands.Bot(command_prefix=prefix, description='Lumberbot v2.', intents=intents)
+bot = commands.Bot(command_prefix=prefix, description='Lumberbot v2', intents=intents)
 
 @bot.event
 async def on_ready():
