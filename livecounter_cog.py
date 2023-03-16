@@ -18,7 +18,7 @@ class livecounter_cog(commands.Cog):
             return
 
     @commands.command(name='livecounter')
-    async def _ping(self, ctx: commands.Context):
+    async def _livecounter(self, ctx: commands.Context):
         """Print the current livecounter.
         """
         
