@@ -24,7 +24,7 @@ class touchdown_cog(commands.Cog):
             return
 
     @commands.command(name='touchdown')
-    async def _touchdown(self, ctx: commands.Context, arg1: str, arg2: str):
+    async def _touchdown(self, ctx: commands.Context, arg1: str=None, arg2: str=None):
         """Add a touchdown for the specified name.
 
         Usage: touchdown <name> to add a touchdown for <name>
