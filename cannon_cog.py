@@ -42,3 +42,14 @@ class cannon_cog(commands.Cog):
                     await voice.disconnect()
                 if not voice.is_connected():
                     break
+
+    @commands.command(name='disconnect')
+    async def _disconnect(self, ctx: commands.Context):
+        """Disconnects from the current voice channel."""
+
+        voice_client = discord.utils.get(self.bot.voice_clients, guild=ctx.guild)
+        if not (voice_client and voice_client.is_connected()):
+            await ctx.channel.send("Not connected to a voice channel")
+            return
+        else:
+            await voice_client.disconnect()
