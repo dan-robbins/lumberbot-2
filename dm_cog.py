@@ -18,5 +18,8 @@ class dm_cog(commands.Cog):
             await self.bot.get_user(self.owner_id).send("DM recieved from {}#{}/{} at {}\nContent: {}".format(message.author.name, message.author.discriminator, message.author.id, datetime.now().strftime("%m/%d/%Y %H:%M:%S"), message.content))
 
         if str(message.channel.type) == "private" and message.author.id == self.owner_id and self.id_regex.match(message.content) is not None:
-            reply_id = int(message.content[0:18])
-            await self.bot.get_user(reply_id).send(message.content[19:])
+            if(len(message.content) > 19):
+                reply_id = int(message.content[0:18])
+                await self.bot.get_user(reply_id).send(message.content[19:])
+            else:
+                message.channel.send("Please include a message to send")
