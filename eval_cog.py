@@ -18,7 +18,7 @@ class eval_cog(commands.Cog):
         else:
             try:
                 code = " ".join(re.split(r" +", arg.strip().strip("` ")))
-                evaled = eval(code)
+                evaled = await eval(code)
                 if not type(evaled) is str:
                     evaled = str(evaled)
                 await ctx.channel.send("```xl\n{}\n```".format(evaled))
