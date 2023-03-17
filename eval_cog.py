@@ -80,8 +80,8 @@ class eval_cog(commands.Cog):
         self.owner_id = owner_id
 
     @commands.command(name='eval')
-    async def _eval(self, ctx: commands.Context, *, stmts):
-        """Evaluate some code on the host machine.
+    async def _eval(self, ctx: commands.Context, *, stmts=None):
+        """Evaluate arbitrary Python code on the host machine.
         Only the bot owner can run this command.
         """
 
@@ -89,26 +89,29 @@ class eval_cog(commands.Cog):
             await ctx.channel.send("Unauthorized user up in my grill! You trying to hack my Catch-a-Ride? Uncool bro, uncool.")
             return
         else:
-            try:
-                stmts = stmts.strip().strip("`")
-                if not stmts:
-                    await ctx.send("After stripping `'s, stmts can't be empty.")
-                    return
+            if stmts is None:
+                return
+            else:
+                try:
+                    stmts = stmts.strip().strip("`")
+                    if not stmts:
+                        await ctx.send("After stripping `'s, stmts can't be empty.")
+                        return
 
-                res = await eval_stmts(stmts, {"bot": self.bot, "ctx": ctx})
-                escaped = code_block_escape(repr(res))
-                message = f"```python\n{escaped}\n```"
-                if len(message) > MAX_DISCORD_MESSAGE_LENGTH:
-                    # The reason that we can safely truncate the message
-                    # is because of how code_block_escape works
-                    prefix = "Truncated result to length 0000:\n"
-                    suffix = "\n```"
-                    message = message.rstrip("`").strip()
+                    res = await eval_stmts(stmts, {"bot": self.bot, "ctx": ctx})
+                    escaped = code_block_escape(repr(res))
+                    message = f"```python\n{escaped}\n```"
+                    if len(message) > MAX_DISCORD_MESSAGE_LENGTH:
+                        # The reason that we can safely truncate the message
+                        # is because of how code_block_escape works
+                        prefix = "Truncated result to length 0000:\n"
+                        suffix = "\n```"
+                        message = message.rstrip("`").strip()
 
-                    new_length = MAX_DISCORD_MESSAGE_LENGTH - len(prefix) - len(suffix)
-                    prefix = prefix.replace("0000", str(new_length))
-                    message = prefix + message[:new_length] + suffix
+                        new_length = MAX_DISCORD_MESSAGE_LENGTH - len(prefix) - len(suffix)
+                        prefix = prefix.replace("0000", str(new_length))
+                        message = prefix + message[:new_length] + suffix
 
-                await ctx.channel.send(message)
-            except Exception as e:
-                await ctx.channel.send("`ERROR` ```xl\n${}\n```".format(e))
+                    await ctx.channel.send(message)
+                except Exception as e:
+                    await ctx.channel.send("`ERROR` ```xl\n${}\n```".format(e))
