@@ -3,12 +3,11 @@ import discord
 from discord.ext import commands
 
 class wood_cog(commands.Cog):
-    def __init__(self, bot: commands.Bot, wood_id: int, wood_posts: bool, blocked: bool, wood_emoji: int):
+    def __init__(self, bot: commands.Bot, wood_id: int, wood_posts: bool, wood_emoji: int):
         self.bot = bot
         self.WOOD_ID = wood_id
         self.wood_posts = wood_posts
         self.wood_emoji = bot.get_emoji(wood_emoji)
-        self.blocked = blocked
 
     @commands.Cog.listener()
     async def on_reaction_add(self, reaction: discord.Reaction, user: discord.User):

@@ -20,12 +20,11 @@ WOOD_ID = int(os.getenv('WOOD_ID'))
 WOOD_EMOJI = int(os.getenv('WOOD_EMOJI'))
 OWNER_ID = int(os.getenv('OWNER_ID'))
 NEAL_ID = int(os.getenv('NEAL_ID'))
-BLOCKED = bool(os.getenv('BLOCKED'))
 intents = discord.Intents.all()
 prefix = '+'
 
 async def add_cogs(bot: commands.Bot):
-    await bot.add_cog(wood_cog(bot, wood_id=WOOD_ID, wood_posts=True, blocked=BLOCKED, wood_emoji=WOOD_EMOJI))
+    await bot.add_cog(wood_cog(bot, wood_id=WOOD_ID, wood_posts=True, wood_emoji=WOOD_EMOJI))
     await bot.add_cog(livecounter_cog(bot))
     await bot.add_cog(cannon_cog(bot, owner_id=OWNER_ID))
     await bot.add_cog(censorship_cog(bot, owner_id=OWNER_ID))
