@@ -40,9 +40,9 @@ class wood_cog(commands.Cog):
         if message.author == self.bot.user or message.author.bot:
             return
         
-        if self.wood_posts and message.author.id == self.WOOD_ID and not self.blocked:
-            await message.add_reaction(self.wood_emoji)
-
-        if self.wood_posts and message.author.id == self.WOOD_ID and self.blocked:
-            m = await message.channel.send("{} All hail the king! {}".format(self.wood_emoji, self.wood_emoji))
-            await m.add_reaction(self.wood_emoji)
+        if self.wood_posts and message.author.id == self.WOOD_ID:
+            try:
+                await message.add_reaction(self.wood_emoji)
+            except discord.errors.Forbidden as e:
+                m = await message.channel.send("{} All hail the king! {}".format(self.wood_emoji, self.wood_emoji))
+                await m.add_reaction(self.wood_emoji)
