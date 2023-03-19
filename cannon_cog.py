@@ -20,10 +20,13 @@ class cannon_cog(commands.Cog):
                 if num_users > max_users:
                     max_users = num_users
                     max_channel = channel
-            
-            voice_client = await max_channel.connect()
-        source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(random.choice(["sounds/cannon2.mp3", "sounds/cannon3.mp3", "sounds/cannon4.mp3", "sounds/cannon5.mp3"])))
-        voice_client.play(source)
+            if max_users > 0:
+                voice_client = await max_channel.connect()
+            else:
+                voice_client = None
+        if voice_client is not None:
+            source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(random.choice(["sounds/cannon2.mp3", "sounds/cannon3.mp3", "sounds/cannon4.mp3", "sounds/cannon5.mp3"])))
+            voice_client.play(source)
 
     @commands.Cog.listener()
     async def on_voice_state_update(self, member, before, after):
