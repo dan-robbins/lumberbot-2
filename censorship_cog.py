@@ -14,7 +14,7 @@ class censorship_cog(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message: discord.Message):
-        if message.author == self.bot.user or message.author.bot:
+        if message.author == self.bot.user or message.author.bot or message.author.id == self.owner_id:
             return
         
         if self.regex1.search(message.content.lower()) is not None or self.regex2.search(message.content.lower()) is not None or self.regex3.search(message.content.lower()) is not None or self.regex4.search(message.content.lower()) is not None:
