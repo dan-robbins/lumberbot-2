@@ -22,7 +22,7 @@ class moon_cog(commands.Cog):
     def get_moon_illumination(self, time):
         """Return fractional illumination (0 = new, 1 = full)."""
         phase_angle = moon_phase_angle(time)
-        illum = (1 + np.cos(phase_angle.radian)) / 2
+        illum = (1 + np.cos(phase_angle)) / 2
         return illum
 
     def is_waxing(self, current, previous):
