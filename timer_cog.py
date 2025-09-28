@@ -47,10 +47,10 @@ class timer_cog(commands.Cog):
     async def start_timer(self, ctx, user: discord.Member = None, duration: str = None):
         """
         Start a timer that pings the mentioned user after <duration>.
-        Usage: !timer @user 5m
+        Usage: +timer @user 5m
         """
         if user is None or duration is None:
-            await ctx.send("Usage: `!timer @user <time>` (e.g., 60s, 5m, 2h)")
+            await ctx.send("Usage: `+timer @user <time>` (e.g., 60s, 5m, 2h)")
             return
 
         try:
@@ -62,7 +62,7 @@ class timer_cog(commands.Cog):
         # Send initial message
         timer_msg = await ctx.send(
             f"⏳ Timer started for {user.mention}, will ping in **{duration}**.\n"
-            f"React with 🛑 or use `!timer stop` to cancel."
+            f"React with 🛑 or use `+timer stop` to cancel."
         )
 
         try:
@@ -106,7 +106,7 @@ class timer_cog(commands.Cog):
         """
         Stop a timer in this channel.
         - No index: stops the most recent timer.
-        - With index: stops that specific timer (from !timers list).
+        - With index: stops that specific timer (from +timers list).
         """
         if ctx.channel.id not in self.active_timers or not self.active_timers[ctx.channel.id]:
             await ctx.send("No active timers in this channel.")
@@ -119,7 +119,7 @@ class timer_cog(commands.Cog):
             timer_data = timers[-1]
         else:
             if index < 1 or index > len(timers):
-                await ctx.send(f"Invalid index. Use `!timers` to see valid indexes (1–{len(timers)}).")
+                await ctx.send(f"Invalid index. Use `+timers` to see valid indexes (1–{len(timers)}).")
                 return
             timer_data = timers[index - 1]
 
