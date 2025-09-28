@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands, tasks
 from astropy.time import Time
-from astropy.coordinates import moon_phase_angle
+from astroplan import moon_phase_angle
 import astropy.units as u
 import datetime
 import pytz
