@@ -26,6 +26,7 @@ class cannon_cog(commands.Cog):
                 voice_client = None
         if voice_client is not None:
             source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(random.choice(["sounds/cannon2.mp3", "sounds/cannon3.mp3", "sounds/cannon4.mp3", "sounds/cannon5.mp3"])))
+            discord.opus.load_opus("libopus.so.0")
             voice_client.play(source)
 
     @commands.Cog.listener()
