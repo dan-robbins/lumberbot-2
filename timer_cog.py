@@ -62,7 +62,7 @@ class timer_cog(commands.Cog):
         # Send initial message
         timer_msg = await ctx.send(
             f"⏳ Timer started for {user.mention}, will ping in **{duration}**.\n"
-            f"React with 🛑 or use `+timer stop` to cancel."
+            f"React with 🛑 or use `+timer_stop` to cancel."
         )
 
         try:
