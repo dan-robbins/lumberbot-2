@@ -13,6 +13,7 @@ from waluigi_cog import waluigi_cog
 from eval_cog import eval_cog
 from ping_cog import ping_cog
 from dm_cog import dm_cog
+from am_cog import am_cog
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -20,6 +21,7 @@ WOOD_ID = int(os.getenv('WOOD_ID'))
 WOOD_EMOJI = int(os.getenv('WOOD_EMOJI'))
 OWNER_ID = int(os.getenv('OWNER_ID'))
 NEAL_ID = int(os.getenv('NEAL_ID'))
+AM_GUILD_ID = int(os.getenv('AM_GUILD_ID'))
 intents = discord.Intents.all()
 prefix = '+'
 
@@ -33,6 +35,7 @@ async def add_cogs(bot: commands.Bot):
     await bot.add_cog(eval_cog(bot, owner_id=OWNER_ID))
     await bot.add_cog(ping_cog(bot))
     await bot.add_cog(dm_cog(bot, owner_id=OWNER_ID))
+    await bot.add_cog(am_cog(bot, am_guild_id=AM_GUILD_ID))
 
 bot = commands.Bot(command_prefix=prefix, description='Lumberbot v2', intents=intents)
 
