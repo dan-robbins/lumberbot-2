@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 
 AUDIO_FILE = "sounds/3am.mp3"
 
-class ThreeAMCog(commands.Cog):
+class am_cog(commands.Cog):
     def __init__(self, bot: commands.Bot, am_guild_id: int):
         self.bot = bot
         self.am_guild_id = am_guild_id
