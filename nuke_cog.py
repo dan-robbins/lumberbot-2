@@ -9,7 +9,7 @@ class nuke_cog(commands.Cog):
 
     @commands.command(name="nuke")
     async def nuke_command(self, ctx):
-        myGuild = await self.bot.fetch_guild(382437037314932756)
+        myGuild = await self.bot.get_guild(382437037314932756)
         voice_client = discord.utils.get(self.bot.voice_clients, guild=myGuild)
         if not (voice_client and voice_client.is_connected()):
             max_users = 0
