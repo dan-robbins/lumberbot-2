@@ -4,9 +4,8 @@ import random
 from discord.ext import commands
 
 class nuke_cog(commands.Cog):
-    def __init__(self, bot: commands.Bot, owner_id: int):
+    def __init__(self, bot: commands.Bot):
         self.bot = bot
-        self.owner_id = owner_id
 
     @commands.command(name="nuke")
     async def nuke_command(self, ctx):
